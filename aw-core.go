@@ -17,7 +17,7 @@ func (itime IsoTime) MarshalJSON() ([]byte, error) {
 
 func (sec_duration SecondsDuration) MarshalJSON() ([]byte, error) {
 	duration := time.Duration(sec_duration)
-	return json.Marshal(uint(duration.Seconds()))
+	return json.Marshal(duration.Seconds())
 }
 
 type Event struct {
