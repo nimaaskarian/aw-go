@@ -2,6 +2,7 @@ package aw_go
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -17,7 +18,7 @@ func (itime IsoTime) MarshalJSON() ([]byte, error) {
 
 func (sec_duration SecondsDuration) MarshalJSON() ([]byte, error) {
 	duration := time.Duration(sec_duration)
-	return json.Marshal(duration.Seconds())
+	return []byte(fmt.Sprintf("%.1f", duration.Seconds())), nil
 }
 
 type Event struct {
