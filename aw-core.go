@@ -1,4 +1,4 @@
-package main
+package aw_go
 
 import "time"
 
