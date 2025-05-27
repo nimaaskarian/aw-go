@@ -56,7 +56,7 @@ func (awc *ActivityWatchClient) InsertEvent(bucket_id string, event Event) (*htt
 }
 
 func (awc *ActivityWatchClient) CreateBucket(bucket_id, event_type string) (*http.Response, error) {
-  endpoint := fmt.Sprintf("buckets/%s/events", bucket_id)
+  endpoint := fmt.Sprintf("buckets/%s", bucket_id)
   return awc.post(endpoint, map[string]interface{} {
     "client": awc.ClientName,
     "hostname": awc.ClientHostname,
