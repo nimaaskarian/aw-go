@@ -50,8 +50,7 @@ func (awc *ActivityWatchClient) post(endpoint string, data interface{}) (*http.R
   return http.DefaultClient.Do(req)
 }
 
-func (awc *ActivityWatchClient) InsertEvent(bucket_id string, event Event) {
+func (awc *ActivityWatchClient) InsertEvent(bucket_id string, event Event) (*http.Response, error) {
   endpoint := fmt.Sprintf("buckets/%s/events", bucket_id)
-  awc.post(endpoint, event)
-  
+  return awc.post(endpoint, event)
 }
