@@ -37,7 +37,7 @@ func (awc *ActivityWatchClient) url(endpoint string) string {
   return fmt.Sprintf("%s/api/0/%s", awc.ServerAddress, endpoint)
 }
 
-func (awc *ActivityWatchClient) post(endpoint string, data any) (*http.Response,error) {
+func (awc *ActivityWatchClient) post(endpoint string, data interface{}) (*http.Response,error) {
   jsonData, err := json.Marshal(data)
   if err != nil {
     return nil, err
