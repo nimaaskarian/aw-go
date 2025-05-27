@@ -24,5 +24,5 @@ type Event struct {
 	Id        *Id                    `json:"id"`
 	Timestamp IsoTime                `json:"timestamp"`
 	Duration  SecondsDuration        `json:"duration"`
-	Data      map[string]interface{} `data:"duration"`
+	Data      map[string]interface{} `json:"data"`
 }
