@@ -21,7 +21,7 @@ func (sec_duration SecondsDuration) MarshalJSON() ([]byte, error) {
 }
 
 type Event struct {
-	Id        *Id                    `json:"id"`
+	Id        *Id                    `json:"id,omitempty"`
 	Timestamp IsoTime                `json:"timestamp"`
 	Duration  SecondsDuration        `json:"duration"`
 	Data      map[string]interface{} `json:"data"`
