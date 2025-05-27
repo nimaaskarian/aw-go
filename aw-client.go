@@ -15,7 +15,7 @@ type ActivityWatchClientConfig struct {
 }
 
 func (awconf * ActivityWatchClientConfig) Address() string {
-	return fmt.Sprintf("%s://{%s}:{%s}", awconf.Protocol, awconf.Hostname, awconf.Port)
+	return fmt.Sprintf("%s://%s:%s", awconf.Protocol, awconf.Hostname, awconf.Port)
 }
 
 type ActivityWatchClient struct {
