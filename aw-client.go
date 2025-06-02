@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"log/slog"
 )
 
 type ActivityWatchClientConfig struct {
@@ -43,7 +42,6 @@ func (awc *ActivityWatchClient) post(endpoint string, data interface{}) (*http.R
 	if err != nil {
 		return nil, err
 	}
-	slog.Debug("post json data", "json_data", jsonData)
 	req, err := http.NewRequest("POST", awc.url(endpoint), bytes.NewBuffer(jsonData))
 	if err != nil {
 		return nil, err
