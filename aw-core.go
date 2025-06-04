@@ -35,15 +35,11 @@ func (sec_duration SecondsDuration) MarshalJSON() ([]byte, error) {
 }
 
 func (sec_duration SecondsDuration) UnmarshalJSON(input []byte) error {
-  var input_str string
-  if err := json.Unmarshal(input, &input_str); err != nil {
+  var seconds float64
+  if err := json.Unmarshal(input, &seconds); err != nil {
     return err
   }
-  sec, err := strconv.ParseFloat(input_str, 64)
-  if err != nil {
-    return err
-  }
-  sec_duration = SecondsDuration(time.Second*time.Duration(sec))
+  sec_duration = SecondsDuration(time.Second*time.Duration(seconds))
   return nil
 }
 
