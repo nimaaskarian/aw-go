@@ -15,7 +15,7 @@ func (itime IsoTime) MarshalJSON() ([]byte, error) {
 	return json.Marshal(t.Format(time.RFC3339))
 }
 
-func (itime IsoTime) UnmarshalJSON(input []byte) error {
+func (itime *IsoTime) UnmarshalJSON(input []byte) error {
   var input_str string
   if err := json.Unmarshal(input, &input_str); err != nil {
     return err
@@ -24,7 +24,7 @@ func (itime IsoTime) UnmarshalJSON(input []byte) error {
   if err != nil {
     return err
   }
-  itime = IsoTime(t)
+  *itime = IsoTime(t)
   return nil
 }
 
@@ -33,12 +33,12 @@ func (sec_duration SecondsDuration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(duration.Seconds())
 }
 
-func (sec_duration SecondsDuration) UnmarshalJSON(input []byte) error {
+func (sec_duration *SecondsDuration) UnmarshalJSON(input []byte) error {
   var seconds float64
   if err := json.Unmarshal(input, &seconds); err != nil {
     return err
   }
-  sec_duration = SecondsDuration(time.Second*time.Duration(seconds))
+  *sec_duration = SecondsDuration(time.Second*time.Duration(seconds))
   return nil
 }
 
