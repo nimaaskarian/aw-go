@@ -17,7 +17,11 @@ func (itime IsoTime) MarshalJSON() ([]byte, error) {
 }
 
 func (itime IsoTime) UnmarshalJSON(input []byte) error {
-  t, err := time.Parse(time.RFC3339, string(input))
+  var input_str string
+  if err := json.Unmarshal(input, &input_str); err != nil {
+    return err
+  }
+  t, err := time.Parse(time.RFC3339, input_str)
   if err != nil {
     return err
   }
@@ -31,7 +35,11 @@ func (sec_duration SecondsDuration) MarshalJSON() ([]byte, error) {
 }
 
 func (sec_duration SecondsDuration) UnmarshalJSON(input []byte) error {
-  sec, err := strconv.ParseFloat(string(input), 64)
+  var input_str string
+  if err := json.Unmarshal(input, &input_str); err != nil {
+    return err
+  }
+  sec, err := strconv.ParseFloat(input_str, 64)
   if err != nil {
     return err
   }
